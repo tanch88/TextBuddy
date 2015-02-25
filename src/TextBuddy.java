@@ -1,11 +1,7 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class TextBuddy {
@@ -28,8 +24,8 @@ public class TextBuddy {
 	private static final int INPUT_SPLIT_FIRST = 0;
 	private static final int INPUT_SPLIT_SECOND = 1;
 	
-	public static ArrayList<String> internalFile;
-	public static String file;
+	private static ArrayList<String> internalFile;
+	private static TextFile file;
 	
     public static void main(String [] args) throws IOException {
     	
@@ -40,7 +36,7 @@ public class TextBuddy {
 
 	public static void initialize(String[] args) throws IOException {
 		getFile(args);
-        filetoInternalFile();
+        internalFile = file.getData();
 	}
 
 	public static void runMain() throws IOException, FileNotFoundException,
@@ -82,7 +78,7 @@ public class TextBuddy {
 
 	private static void getFile(String[] args) {
 		if(args.length == 1){
-			file = args[0];
+			file = new TextFile(args[0]);
 			System.out.println(String.format(MESSAGE_WELCOME, file));
 		}
 		else{
@@ -90,20 +86,7 @@ public class TextBuddy {
 			System.exit(0);
 		}
 	}
-    
-	private static void filetoInternalFile() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-        internalFile = new ArrayList<String>();
-		
-        String line = null;
-
-        while((line = bufferedReader.readLine()) != null) {
-            internalFile.add(line);
-        }    
-
-        bufferedReader.close();   
-	}
-	
+    	
 	private static COMMAND_TYPE determineCommandType(String commandTypeString) {
 		if (commandTypeString == null)
 			throw new Error("command type string cannot be null!");
@@ -155,32 +138,12 @@ public class TextBuddy {
 	}
 	
 	private static String add(String input) throws IOException {
-        appendToFile(input); 
+        file.append(input); 
         addToInternalFile(input);
         
         return String.format(MESSAGE_ADD, file, input);
 	}
-
-	private static void internalFileToFile() throws IOException {
-		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-        
-		for(int i = 0; i < internalFile.size(); i++){
-			bufferedWriter.write(internalFile.get(i));
-        	bufferedWriter.newLine();
-		}
-
-        bufferedWriter.close();
-	}
-	
-	public static void appendToFile(String input) throws IOException {
-		BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
-        
-        bufferedWriter.write(input);
-        bufferedWriter.newLine();
-
-        bufferedWriter.close();
-	}
-	
+		
 	public static void addToInternalFile(String input){
 		internalFile.add(input);
 	}
@@ -191,7 +154,7 @@ public class TextBuddy {
 		int deleteIndex = deleteNum - 1;
 		
 		String deleteText = deleteItemFromInternalFile(deleteIndex);
-		internalFileToFile();
+		file.write(internalFile);
 		
 		return String.format(MESSAGE_DELETE, file, deleteText);
 	}
@@ -202,18 +165,13 @@ public class TextBuddy {
 	
 	public static String clear() throws FileNotFoundException{
 		clearInternalFile();
-		clearFile();
+		file.clear();
 		
 		return String.format(MESSAGE_CLEAR, file);
 	}
 	
 	private static void clearInternalFile(){
 		internalFile.clear();
-	}
-	
-	private static void clearFile() throws FileNotFoundException{
-		PrintWriter printWriter = new PrintWriter(file);
-		printWriter.close();
 	}
 	
 	private static String[] splitFirstWord(String input){
