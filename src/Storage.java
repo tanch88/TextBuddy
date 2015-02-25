@@ -8,11 +8,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
-public class TextFile {
+public class Storage {
 
 	String file;
 	
-	public TextFile(String file){
+	public Storage(String file){
 		this.file = file;
 	}
 	

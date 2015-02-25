@@ -1,0 +1,9 @@
+
+public enum COMMAND_TYPE {
+	DISPLAY, 
+	ADD, 
+	DELETE, 
+	CLEAR, 
+	EXIT, 
+	INVALID
+}
