@@ -14,7 +14,7 @@ public class TextBuddyTest {
 		
 		add();
 		
-		TextBuddy.clear();
+		clear();
 	}
 	
 	@Test
@@ -25,7 +25,7 @@ public class TextBuddyTest {
 		add();
 		delete();
 		
-		TextBuddy.clear();
+		clear();
 	}
 	
 	@Test
@@ -35,8 +35,6 @@ public class TextBuddyTest {
 		
 		add();
 		clear();
-		
-		TextBuddy.clear();
 	}
 	
 	@Test
@@ -46,7 +44,7 @@ public class TextBuddyTest {
 		
 		sort();
 		
-		TextBuddy.clear();
+		clear();
 	}
 
 	private void sort() throws FileNotFoundException, IOException, Error {
