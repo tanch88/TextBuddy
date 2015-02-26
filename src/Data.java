@@ -5,6 +5,10 @@ public class Data {
 
 	ArrayList<String> data;
 	
+	public Data(){
+		data = new ArrayList<String>();
+	}
+	
 	public Data(ArrayList<String> data){
 		this.data = data;
 	}
@@ -33,6 +37,17 @@ public class Data {
 	
 	public void sort(){
 		Collections.sort(data);
+	}
+	
+	public Data search(String word){
+		Data temp = new Data();
+		for(int i = 0; i < data.size(); i++){
+			String thisData = data.get(i);
+			if(thisData.contains(word)){
+				temp.add(thisData);
+			}
+		}
+		return temp;
 	}
 	
 	public String toString() {

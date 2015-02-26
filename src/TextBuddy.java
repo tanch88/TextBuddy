@@ -118,12 +118,15 @@ public class TextBuddy {
 	}
 	
 
-	private static String search(String message) {
-		if(message.equals("")){
+	private static String search(String word) {
+		if(word.equals("")){
 			return String.format(MESSAGE_NO_VALUE, "search");
 		}
-		else{
+		else if(myList.isEmpty()){
 			return String.format(MESSAGE_EMPTY, file);
+		}
+		else{
+			return myList.search(word).toString();
 		}
 	}
 		

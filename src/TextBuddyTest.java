@@ -6,7 +6,16 @@ import java.io.IOException;
 import org.junit.Test;
 
 public class TextBuddyTest {
-
+	
+	@Test
+	public void clearTest() throws IOException{
+		String[] args = {"mytextfile.txt"};
+		TextBuddy.initialize(args);
+		
+		add();
+		clear();
+	}
+	
 	@Test
 	public void addTest() throws IOException{
 		String[] args = {"mytextfile.txt"};
@@ -27,16 +36,7 @@ public class TextBuddyTest {
 		
 		clear();
 	}
-	
-	@Test
-	public void clearTest() throws IOException{
-		String[] args = {"mytextfile.txt"};
-		TextBuddy.initialize(args);
 		
-		add();
-		clear();
-	}
-	
 	@Test
 	public void sortTest() throws IOException{
 		String[] args = {"mytextfile.txt"};
@@ -56,6 +56,10 @@ public class TextBuddyTest {
 		
 		testOneCommand("list is empty", "mytextfile.txt is empty", "search little");
 		
+		add();
+		
+		testOneCommand("search one item", "1. little brown fox", "search little");
+
 		clear();
 	}
 
