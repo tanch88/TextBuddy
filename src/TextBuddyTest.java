@@ -59,6 +59,10 @@ public class TextBuddyTest {
 		add();
 		
 		testOneCommand("search one item", "1. little brown fox", "search little");
+		
+		testOneCommand("add one item", "added to mytextfile.txt: “this little blue fox”", "add this little blue fox");
+
+		testOneCommand("search two item", "1. little brown fox\n2. this little blue fox", "search little");
 
 		clear();
 	}
