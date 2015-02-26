@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Data {
 
@@ -28,6 +29,10 @@ public class Data {
 	
 	public boolean isEmpty(){
 		return data.size() <= 0;
+	}
+	
+	public void sort(){
+		Collections.sort(data);
 	}
 	
 	public String toString() {

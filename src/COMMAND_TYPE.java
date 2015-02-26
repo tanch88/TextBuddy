@@ -4,6 +4,7 @@ public enum COMMAND_TYPE {
 	ADD, 
 	DELETE, 
 	CLEAR, 
+	SORT,
 	EXIT, 
 	INVALID
 }

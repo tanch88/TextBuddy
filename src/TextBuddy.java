@@ -18,10 +18,8 @@ public class TextBuddy {
 	private static Storage file;
 	
     public static void main(String [] args) throws IOException {
-    	
     	initialize(args);
 		runMain();   
-		
     }
 
 	public static void initialize(String[] args) throws IOException{
@@ -66,13 +64,15 @@ public class TextBuddy {
 			return delete(ps.getMessage());
 		case CLEAR :
 			return clear();
+		case SORT:
+			return sort();
 		case EXIT :
 			System.exit(0);
 		default :
 			throw new Error(MESSAGE_INVALID);
 		}
 	}
-    	
+
 	private static String display() {
 		if(myList.isEmpty()){
 			return String.format(MESSAGE_EMPTY, file);
@@ -103,6 +103,11 @@ public class TextBuddy {
 		file.clear();
 		
 		return String.format(MESSAGE_CLEAR, file);
+	}
+	
+	
+	private static String sort() {
+		return String.format(MESSAGE_EMPTY, file);
 	}
 		
 }

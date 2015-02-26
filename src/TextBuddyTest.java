@@ -39,6 +39,11 @@ public class TextBuddyTest {
 		TextBuddy.clear();
 	}
 	
+	@Test
+	public void sortTest() throws FileNotFoundException, IOException, Error{
+		testOneCommand("sort empty", "mytextfile.txt is empty", "sort");	
+	}
+	
 	private void add() throws IOException {			
 		testOneCommand("first add", "added to mytextfile.txt: “little brown fox”", "add little brown fox");	
 		

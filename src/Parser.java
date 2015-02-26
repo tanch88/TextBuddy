@@ -44,6 +44,8 @@ public class Parser {
 			return COMMAND_TYPE.DELETE;
 		} else if (commandTypeString.equalsIgnoreCase("clear")) {
 			return COMMAND_TYPE.CLEAR;
+		} else if (commandTypeString.equalsIgnoreCase("sort")) {
+			return COMMAND_TYPE.SORT;
 		} else if (commandTypeString.equalsIgnoreCase("exit")) {
 		 	return COMMAND_TYPE.EXIT;
 		} else {
