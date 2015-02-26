@@ -41,7 +41,20 @@ public class TextBuddyTest {
 	
 	@Test
 	public void sortTest() throws FileNotFoundException, IOException, Error{
-		testOneCommand("sort empty", "mytextfile.txt is empty", "sort");	
+		String[] args = {"mytextfile.txt"};
+		TextBuddy.initialize(args);
+		
+		sort();
+		
+		TextBuddy.clear();
+	}
+
+	private void sort() throws FileNotFoundException, IOException, Error {
+		testOneCommand("sort empty", "mytextfile.txt is empty", "sort");
+		
+		add();
+		
+		testOneCommand("sort item", "1. jumped over the moon\n2. little brown fox", "sort");
 	}
 	
 	private void add() throws IOException {			

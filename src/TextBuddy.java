@@ -107,6 +107,10 @@ public class TextBuddy {
 	
 	
 	private static String sort() {
+		if(!myList.isEmpty()){
+			myList.sort();
+			return myList.toString();
+		}
 		return String.format(MESSAGE_EMPTY, file);
 	}
 		
