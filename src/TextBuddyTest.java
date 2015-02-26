@@ -64,6 +64,8 @@ public class TextBuddyTest {
 
 		testOneCommand("search two item", "1. little brown fox\n2. this little blue fox", "search little");
 
+		testOneCommand("search not found", "no text matches “dino”", "search dino");
+		
 		clear();
 	}
 

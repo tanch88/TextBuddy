@@ -11,6 +11,7 @@ public class TextBuddy {
 	private static final String MESSAGE_DELETE = "deleted from %1$s: “%2$s”";
 	private static final String MESSAGE_CLEAR = "all content deleted from %1$s";
 	private static final String MESSAGE_EMPTY = "%1$s is empty";
+	private static final String MESSAGE_EMPTY_SEARCH = "no text matches “%1$s”";
 	private static final String MESSAGE_INVALID = "command is invalid";
 	private static final String MESSAGE_NO_VALUE = "please indicate word to %1$s";
 	private static final String MESSAGE_NO_FILE = "file not available";
@@ -126,7 +127,14 @@ public class TextBuddy {
 			return String.format(MESSAGE_EMPTY, file);
 		}
 		else{
-			return myList.search(word).toString();
+			Data searchResult = myList.search(word);
+			
+			if(!searchResult.isEmpty()){
+				return searchResult.toString();
+			}
+			else{
+				return String.format(MESSAGE_EMPTY_SEARCH, word);
+			}
 		}
 	}
 		
