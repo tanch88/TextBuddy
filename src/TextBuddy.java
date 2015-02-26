@@ -119,7 +119,12 @@ public class TextBuddy {
 	
 
 	private static String search(String message) {
-		return String.format(MESSAGE_NO_VALUE, "search");
+		if(message.equals("")){
+			return String.format(MESSAGE_NO_VALUE, "search");
+		}
+		else{
+			return String.format(MESSAGE_EMPTY, file);
+		}
 	}
 		
 }

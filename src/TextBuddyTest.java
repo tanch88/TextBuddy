@@ -54,11 +54,13 @@ public class TextBuddyTest {
 		
 		testOneCommand("no search condition", "please indicate word to search", "search");
 		
+		testOneCommand("list is empty", "mytextfile.txt is empty", "search little");
+		
 		clear();
 	}
 
 	private void sort() throws FileNotFoundException, IOException, Error {
-		testOneCommand("sort empty", "mytextfile.txt is empty", "sort");
+		testOneCommand("list is empty", "mytextfile.txt is empty", "sort");
 		
 		add();
 		
