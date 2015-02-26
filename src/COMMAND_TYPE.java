@@ -5,6 +5,7 @@ public enum COMMAND_TYPE {
 	DELETE, 
 	CLEAR, 
 	SORT,
+	SEARCH,
 	EXIT, 
 	INVALID
 }

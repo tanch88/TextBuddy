@@ -12,6 +12,7 @@ public class TextBuddy {
 	private static final String MESSAGE_CLEAR = "all content deleted from %1$s";
 	private static final String MESSAGE_EMPTY = "%1$s is empty";
 	private static final String MESSAGE_INVALID = "command is invalid";
+	private static final String MESSAGE_NO_VALUE = "please indicate word to %1$s";
 	private static final String MESSAGE_NO_FILE = "file not available";
 			
 	private static Data myList;
@@ -66,6 +67,8 @@ public class TextBuddy {
 			return clear();
 		case SORT:
 			return sort();
+		case SEARCH:
+			return search(ps.getMessage());
 		case EXIT :
 			System.exit(0);
 		default :
@@ -112,6 +115,11 @@ public class TextBuddy {
 			return myList.toString();
 		}
 		return String.format(MESSAGE_EMPTY, file);
+	}
+	
+
+	private static String search(String message) {
+		return String.format(MESSAGE_NO_VALUE, "search");
 	}
 		
 }

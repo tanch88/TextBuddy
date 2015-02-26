@@ -38,11 +38,21 @@ public class TextBuddyTest {
 	}
 	
 	@Test
-	public void sortTest() throws FileNotFoundException, IOException, Error{
+	public void sortTest() throws IOException{
 		String[] args = {"mytextfile.txt"};
 		TextBuddy.initialize(args);
 		
 		sort();
+		
+		clear();
+	}
+	
+	@Test
+	public void searchTest() throws IOException{
+		String[] args = {"mytextfile.txt"};
+		TextBuddy.initialize(args);
+		
+		testOneCommand("no search condition", "please indicate word to search", "search");
 		
 		clear();
 	}
