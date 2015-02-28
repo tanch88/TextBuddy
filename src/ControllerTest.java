@@ -5,12 +5,12 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-public class TextBuddyTest {
+public class ControllerTest {
+	private static Controller c;
 	
 	@Test
 	public void clearTest() throws IOException{
-		String[] args = {"mytextfile.txt"};
-		TextBuddy.initialize(args);
+		initialize();
 		
 		add();
 		clear();
@@ -18,8 +18,7 @@ public class TextBuddyTest {
 	
 	@Test
 	public void addTest() throws IOException{
-		String[] args = {"mytextfile.txt"};
-		TextBuddy.initialize(args);
+		initialize();
 		
 		add();
 		
@@ -28,8 +27,7 @@ public class TextBuddyTest {
 	
 	@Test
 	public void deleteTest() throws IOException{
-		String[] args = {"mytextfile.txt"};
-		TextBuddy.initialize(args);
+		initialize();
 		
 		add();
 		delete();
@@ -39,8 +37,7 @@ public class TextBuddyTest {
 		
 	@Test
 	public void sortTest() throws IOException{
-		String[] args = {"mytextfile.txt"};
-		TextBuddy.initialize(args);
+		initialize();
 		
 		sort();
 		
@@ -49,9 +46,14 @@ public class TextBuddyTest {
 	
 	@Test
 	public void searchTest() throws IOException{
-		String[] args = {"mytextfile.txt"};
-		TextBuddy.initialize(args);
+		initialize();
 		
+		search();
+		
+		clear();
+	}
+
+	private void search() throws IOException{
 		testOneCommand("no search condition", "please indicate word to search", "search");
 		
 		testOneCommand("list is empty", "mytextfile.txt is empty", "search little");
@@ -65,8 +67,6 @@ public class TextBuddyTest {
 		testOneCommand("search two item", "1. little brown fox\n2. this little blue fox", "search little");
 
 		testOneCommand("search not found", "no text matches “dino”", "search dino");
-		
-		clear();
 	}
 
 	private void sort() throws FileNotFoundException, IOException, Error {
@@ -103,8 +103,13 @@ public class TextBuddyTest {
 
 	}
 	
+	public static void initialize() throws IOException{
+		String[] args = {"mytextfile.txt"};
+		c = new Controller(args);
+	}
+	
 	private void testOneCommand(String description, String expected, String command) throws FileNotFoundException, IOException, Error{
-		assertEquals(description, expected, TextBuddy.executeCommand(command)); 
+		assertEquals(description, expected, c.executeCommand(command)); 
 	}
 
 }

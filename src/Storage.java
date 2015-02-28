@@ -12,8 +12,16 @@ public class Storage {
 
 	String file;
 	
+	public Storage(){
+		this.file = "";
+	}
+	
 	public Storage(String file){
 		this.file = file;
+	}
+	
+	public boolean isEmpty(){
+		return file == "";
 	}
 	
 	public ArrayList<String> getData() throws IOException {
